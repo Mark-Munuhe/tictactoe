@@ -78,9 +78,8 @@ public class tictactoe implements ActionListener {
 public void firstTurn() {
         
     try {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     } catch (InterruptedException e) {
-        // TODO: handle exception
         e.printStackTrace();
     }
         if (random.nextInt(2) == 0) {
