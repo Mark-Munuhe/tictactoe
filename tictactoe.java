@@ -13,6 +13,8 @@ public class tictactoe implements ActionListener {
     JLabel textField = new JLabel();//displays context such as O wins!
     JButton[] buttons = new JButton[9];//instantiates 9 buttons for the game
     boolean player1_turn;//decides who to start...if its player 1 its set to tro ,if its false, player 2 plays
+    JButton resetButton = new JButton("Reset");
+    Color defaultColor;
 
 
     tictactoe() {
@@ -47,10 +49,24 @@ public class tictactoe implements ActionListener {
         frame.add(title_panel, BorderLayout.NORTH);
         frame.add(button_panel);
 
+        resetButton.setFont(new Font("Ink Free", Font.BOLD, 35));
+        resetButton.setFocusable(false);
+        resetButton.setBackground(new Color(35, 35, 35));
+        resetButton.setForeground(new Color(255, 255, 255));
+        resetButton.addActionListener(this);
+        frame.add(resetButton, BorderLayout.SOUTH);
+
+        defaultColor = buttons[0].getBackground();
+
         firstTurn();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == resetButton) {
+            resetGame();
+            return;
+        }
 
         for (int i = 0; i < 9; i++) {
             if (e.getSource() == buttons[i]) {
@@ -74,6 +90,22 @@ public class tictactoe implements ActionListener {
             }
         }
     }
+
+    public void resetGame() {
+        for (int i = 0; i < 9; i++) {
+            buttons[i].setText("");
+            buttons[i].setEnabled(true);
+            buttons[i].setBackground(defaultColor);
+        }
+        if (random.nextInt(2) == 0) {
+            player1_turn = true;
+            textField.setText("X turn");
+        } else {
+            player1_turn = false;
+            textField.setText("O turn");
+        }
+    }
+
 //to decide who's turn will it be first
 public void firstTurn() {
         
