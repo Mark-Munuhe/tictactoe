@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=Tic Tac Toe
+Comment=Play Tic Tac Toe
+Exec=java -jar "/home/munuhe/Documents/CODING N STUFF/Java/tictactoe/tictactoe.jar"
+Icon=input-gaming
+Categories=Game;
